@@ -3,7 +3,7 @@
 #include <vector>
 #include <string> 
 #include <cmath>
-
+#include <new>
 std::vector<double> readfiledat()
 {
     std::ifstream file;
