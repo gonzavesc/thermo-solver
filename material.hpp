@@ -1,3 +1,9 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string> 
+#include <cmath>
+#include <new>
 
 class Material
 {
