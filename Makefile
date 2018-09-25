@@ -1,13 +1,13 @@
 CC = g++
 FLAG = -std=c++11 -c -Wall
 
-all: test iteration export heat
+all: init iteration export heat
 	$(CC) *.o -o heat_1.2
-test:
-	$(CC) $(FLAG) test.cpp
+init:
+	$(CC) $(FLAG) init.cpp
 
 iteration:
-	$(CC) $(FLAG) test.cpp
+	$(CC) $(FLAG) iteration.cpp
 export:
 	$(CC) $(FLAG) export.cpp
 heat:
