@@ -58,3 +58,53 @@ void setcoeff(const std::vector<double>& diff, std::vector<Material>& M)
         M[i].ap = M[i].ae + M[i].aw + M[i].an + M[i].as + M[i].a0;
     }
 }
+
+void setcontact(const std::vector<double>& diff, Material& contact, const Material& M1, const Material& M2, const int dir, const int side)
+{
+    double keq;
+    contact.ae = M1.ae; contact.aw = M1.aw; contact.an = M1.an; contact.as = M1.an;    
+    contact.k = M1.k; contact.rho = M1.rho; contact.cp = M1.cp; contact.a0 = M1.a0;
+    keq = 2 * M1.k * M2.k / (M1.k + M2.k);
+    if (dir == 0)
+    {
+        if (side == 0)
+        {
+            contact.ae = keq * diff[1] / diff[0];
+        }
+        if (side == 1)
+        {
+            contact.aw = keq * diff[1] / diff[0];
+        }
+    }
+    if (dir == 1)
+    {
+        if (side == 0)
+        {
+            contact.an = keq * diff[0] / diff[1];
+        }
+        if (side == 1)
+        {
+            contact.as = keq * diff[0] / diff[1];
+        }
+    }
+    contact.ap = contact.ae + contact.aw + contact.an + contact.as + contact.a0;
+}
+
+void initializeT(std::vector<std::vector<double>>& Tmap, const int p)
+{
+    const int i(0);
+    for (int j = 0; j <= p; j++)
+    {
+        Tmap[i][j] = 23.0;
+    }
+}
+
+std::vector<std::vector<int>> puntexp(const std::vector<double>& data, const std::vector<double> differentials)
+{
+    std::vector< std::vector<int> > pd(2, std::vector<int> (4, 0));
+    pd[0][0] = ceil(data[23]/differentials[0]) - 1; pd[1][0] = ceil(data[23]/differentials[0]);
+    pd[0][1] = ceil(data[24]/differentials[1]) - 1; pd[1][1] = ceil(data[24]/differentials[1]);    
+    pd[0][2] = ceil(data[25]/differentials[0]) - 1; pd[1][2] = ceil(data[25]/differentials[0]);
+    pd[0][3] = ceil(data[26]/differentials[1]) - 1; pd[1][3] = ceil(data[26]/differentials[1]);
+    return pd;
+}
