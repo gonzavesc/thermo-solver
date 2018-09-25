@@ -25,13 +25,7 @@ std::vector<double> readfiledat()
     }
     return v;
 }
-/*
-class Material
-{
-    public:
-    double k, rho, cp, ae, an, aw, as, a0, ap;
-};
-*/
+
 
 void setvalues(const std::vector<double>& C, std::vector<Material>& M)
 {
