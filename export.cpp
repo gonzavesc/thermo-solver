@@ -25,7 +25,7 @@
     #define INCLUDE_EXP
 #endif
 
-void exportarMatriu(const std::vector< std::vector<double> >& Tmap, const std::vector<std::vector<int>>& material_points);
+void exportarMatriu(const std::vector< std::vector<double> >& Tmap, const std::vector<std::vector<int>>& material_points)
 {
     int i,jj;
     std::ofstream output;
