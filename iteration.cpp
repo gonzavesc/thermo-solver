@@ -10,9 +10,9 @@
 	#define INCLUDE_MATERIAL
 #endif
 
-#ifndef INCLUDE_TEST
-	#include "test.hpp"
-	#define INCLUDE_TEST
+#ifndef INCLUDE_INIT
+	#include "init.hpp"
+	#define INCLUDE_INIT
 #endif
 
 #ifndef INCLUDE_IT
@@ -134,8 +134,7 @@ void gauss_seidel(std::vector<std::vector<double>>& Tmap, const std::vector<std:
         //boundary 4-3
         iterate_gauss(material_points[1][1] + 2, material_points[1][2] - 1, material_points[0][0] + 1, material_points[0][0] + 1, Tmap, Tmap_p , Mcont[8], rms);
         
-        rms = sqrt(rms / N);
-        
+        rms = sqrt(rms / N);        
     }
     
     //boundary conditions
