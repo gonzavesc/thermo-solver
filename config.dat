@@ -16,8 +16,8 @@ px2 0.5
 py2 0.7
 px3 1.1
 py3 0.8
-dx 0.001
-dy 0.001
+dx 0.01
+dy 0.01
 dt 1
 runtime 10000
 method 1
