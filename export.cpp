@@ -10,9 +10,9 @@
 	#define INCLUDE_MATERIAL
 #endif
 
-#ifndef INCLUDE_TEST
-	#include "test.hpp"
-	#define INCLUDE_TEST
+#ifndef INCLUDE_INIT
+	#include "init.hpp"
+	#define INCLUDE_INIT
 #endif
 
 #ifndef INCLUDE_IT
@@ -25,7 +25,7 @@
     #define INCLUDE_EXP
 #endif
 
-void exportarMatriu(const std::vector< std::vector<double> >& Tmap, const std::vector<std::vector<int>>& material_points)
+void exportarMatriu(const std::vector< std::vector<double> >& Tmap, const std::vector<std::vector<int>>& material_points);
 {
     int i,jj;
     std::ofstream output;
@@ -47,14 +47,14 @@ void exportarTemp(const std::vector< std::vector<double> >& Tmap,const std::vect
     double T1, T2;
     std::ofstream output_T;
     output_T.open("Temp.dat", std::ios::out | std::ios::app);
-    T1 = 1 / (differentials[0] * differentials[0]) * (Tmap[pd[0][1]][pd[0][0]] * (pd[1][0] * differentials[0] - data[23]) * (pd[1][1] * differentials[0] - data[24]) + 
-    Tmap[pd[0][1]][pd[1][0]] * (data[23] - pd[0][0] * differentials[0]) * (pd[1][1] * differentials[0] - data[24]) + 
-    Tmap[pd[1][1]][pd[0][0]] * (pd[1][0] * differentials[0] - data[23]) * (data[24] - pd[0][1] * differentials[0]) +
-    Tmap[pd[1][1]][pd[1][0]] * (data[23] - pd[0][0] * differentials[0]) * (data[24] - pd[0][1] * differentials[0]));
-    T2 = 1 / (differentials[0] * differentials[0]) * (Tmap[pd[0][3]][pd[0][2]] * (pd[1][2] * differentials[0] - data[25]) * (pd[1][3] * differentials[0] - data[26]) + 
-    Tmap[pd[0][3]][pd[1][2]] * (data[25] - pd[0][2] * differentials[0]) * (pd[1][3] * differentials[0] - data[26]) + 
-    Tmap[pd[1][3]][pd[0][2]] * (pd[1][2] * differentials[0] - data[25]) * (data[26] - pd[0][3] * differentials[0]) +
-    Tmap[pd[1][3]][pd[1][2]] * (data[25] - pd[0][2] * differentials[0]) * (data[26] - pd[0][3] * differentials[0]));
+    T1 = 1 / (differentials[0] * differentials[1]) * (Tmap[pd[0][1]][pd[0][0]] * (pd[1][0] * differentials[0] - data[23]) * (pd[1][1] * differentials[1] - data[24]) + 
+    Tmap[pd[0][1]][pd[1][0]] * (data[23] - pd[0][0] * differentials[0]) * (pd[1][1] * differentials[1] - data[24]) + 
+    Tmap[pd[1][1]][pd[0][0]] * (pd[1][0] * differentials[0] - data[23]) * (data[24] - pd[0][1] * differentials[1]) +
+    Tmap[pd[1][1]][pd[1][0]] * (data[23] - pd[0][0] * differentials[0]) * (data[24] - pd[0][1] * differentials[1]));
+    T2 = 1 / (differentials[0] * differentials[1]) * (Tmap[pd[0][3]][pd[0][2]] * (pd[1][2] * differentials[0] - data[25]) * (pd[1][3] * differentials[1] - data[26]) + 
+    Tmap[pd[0][3]][pd[1][2]] * (data[25] - pd[0][2] * differentials[0]) * (pd[1][3] * differentials[1] - data[26]) + 
+    Tmap[pd[1][3]][pd[0][2]] * (pd[1][2] * differentials[0] - data[25]) * (data[26] - pd[0][3] * differentials[1]) +
+    Tmap[pd[1][3]][pd[1][2]] * (data[25] - pd[0][2] * differentials[0]) * (data[26] - pd[0][3] * differentials[1]));
     output_T << t <<", " << T1 << ", " << T2 << std::endl;
     output_T.close();
 }
