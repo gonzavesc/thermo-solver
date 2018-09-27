@@ -10,9 +10,9 @@
 	#define INCLUDE_MATERIAL
 #endif
 
-#ifndef INCLUDE_TEST
-	#include "test.hpp"
-	#define INCLUDE_TEST
+#ifndef INCLUDE_INIT
+	#include "init.hpp"
+	#define INCLUDE_INIT
 #endif
 
 #ifndef INCLUDE_IT

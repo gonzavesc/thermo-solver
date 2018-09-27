@@ -10,9 +10,9 @@
 	#define INCLUDE_MATERIAL
 #endif
 
-#ifndef INCLUDE_TEST
-	#include "test.hpp"
-	#define INCLUDE_TEST
+#ifndef INCLUDE_INIT
+	#include "init.hpp"
+	#define INCLUDE_INIT
 #endif
 
 void iterate_gauss(const int& ini, const int& fini, const int& inj, const int& finj, std::vector<std::vector<double>>& Tmap,const std::vector<std::vector<double>>& Tmap_p , const Material& mat, double& rms);
