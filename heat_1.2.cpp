@@ -27,7 +27,7 @@
 
 int main()
 {
-    const char C[100] = "rm Temp.dat Matric.dat";
+    const char C[100] = "rm Temp.dat Matrix.dat";
     system(C);
     double impl, runtime;
     double Time;
@@ -90,6 +90,7 @@ int main()
     {
         while(Time < runtime)
         {
+            exportarTemp(Tmap, punts_discr, differentials, Time, data);
             n++;
             Time = differentials[2] * n;
             for (i = 0; i <= material_points[1][2]; i++)
@@ -98,10 +99,10 @@ int main()
                 {
                     Tmap_p[i][j] = Tmap[i][j];
                 }
-            }
-            exportarTemp(Tmap, punts_discr, differentials, Time, data);
+            }            
             gauss_seidel(Tmap, Tmap_p, M, Mcont, Mcontd, differentials, Time, material_points, N);
         }
+        exportarTemp(Tmap, punts_discr, differentials, Time, data);
         exportarMatriu(Tmap, material_points);
     }
     return 0;

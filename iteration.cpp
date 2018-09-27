@@ -85,6 +85,7 @@ void gauss_seidel(std::vector<std::vector<double>>& Tmap, const std::vector<std:
         
         //material 1
         iterate_gauss(1, material_points[1][0] - 1, 1, material_points[0][0] - 1, Tmap, Tmap_p , M[0], rms);
+
         //material 2
         
         iterate_gauss(1, material_points[1][1] - 1, material_points[0][0] + 2, material_points[0][2] - 1, Tmap, Tmap_p , M[1], rms);
@@ -134,29 +135,35 @@ void gauss_seidel(std::vector<std::vector<double>>& Tmap, const std::vector<std:
         //boundary 4-3
         iterate_gauss(material_points[1][1] + 2, material_points[1][2] - 1, material_points[0][0] + 1, material_points[0][0] + 1, Tmap, Tmap_p , Mcont[8], rms);
         
+        //boundary conditions
+        //material 1
+        
+        //left
+        fluid_contact(Tmap, 1, material_points[1][0], 0, diff, M[0]);
+        
+        //material 2
+        //right
+        variable_temperature(Tmap, Time, 1, material_points[1][1], material_points[0][2], material_points[0][2]);
+        
+        //material 3
+        //top
+        qflow(Tmap, 1, material_points[0][1], material_points[1][2], diff, M[2]);
+        //left
+        fluid_contact(Tmap, material_points[1][0] + 1, material_points[1][2] - 1, 0, diff, M[2]);
+        
+        //material 4
+        //right
+        variable_temperature(Tmap, Time, material_points[1][1] + 1, material_points[1][2], material_points[0][2], material_points[0][2]);
+        
+        //top
+        
+        qflow(Tmap, material_points[0][1] + 1, material_points[0][2] - 1, material_points[1][2], diff, M[3]);
+    
+
         rms = sqrt(rms / N);        
     }
     
-    //boundary conditions
-    //material 1
-    //left
-    fluid_contact(Tmap, 1, material_points[1][0], 0, diff, M[0]);
-    //material 2
-    //right
-    variable_temperature(Tmap, Time, 1, material_points[1][1], material_points[0][2], material_points[0][2]);
     
-    //material 3
-    //top
-    qflow(Tmap, 1, material_points[0][1], material_points[1][2], diff, M[2]);
-    //left
-    fluid_contact(Tmap, material_points[1][0] + 1, material_points[1][2] - 1, 0, diff, M[2]);
-
-    //material 4
-    //right
-    variable_temperature(Tmap, Time, material_points[1][1] + 1, material_points[1][2], material_points[0][2], material_points[0][2]);
-    //top
-    qflow(Tmap, material_points[0][1] + 1, material_points[0][2] - 1, material_points[1][2], diff, M[3]);
-
 
 
 }

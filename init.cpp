@@ -56,6 +56,7 @@ void setcoeff(const std::vector<double>& diff, std::vector<Material>& M)
         M[i].an = M[i].k * diff[0] / diff[1]; M[i].as = M[i].an;
         M[i].a0 = M[i].rho * M[i].cp * diff[0] * diff[1] / diff[2];
         M[i].ap = M[i].ae + M[i].aw + M[i].an + M[i].as + M[i].a0;
+        std::cout << M[i].ae << " " << M[i].an << " " << M[i].a0 << " " << M[i].ap << std::endl;
     }
 }
 
