@@ -4,14 +4,15 @@
 #include <string> 
 #include <cmath>
 #include <new>
+#include <stdlib.h> 
 #ifndef INCLUDE_MATERIAL
 	#include "material.hpp"
 	#define INCLUDE_MATERIAL
 #endif
 
-#ifndef INCLUDE_TEST
-	#include "test.hpp"
-	#define INCLUDE_TEST
+#ifndef INCLUDE_INIT
+	#include "init.hpp"
+	#define INCLUDE_INIT
 #endif
 #ifndef INCLUDE_IT
     #include "iteration.hpp"
@@ -26,6 +27,8 @@
 
 int main()
 {
+    const char C[100] = "rm Temp.dat Matric.dat";
+    system(C);
     double impl, runtime;
     double Time;
     int n(0), N, i, j;
