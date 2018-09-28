@@ -73,10 +73,9 @@ void gauss_seidel(std::vector<std::vector<double>>& Tmap, const std::vector<std:
                     const std::vector<Material>& Mcont, const std::vector<Material>& Mcontd, const std::vector<double>& diff, const double& Time, 
                     const std::vector<std::vector<int>>& material_points, const int& N)
 {
-    const double err (1.e-4);
+    const double err (1.e-8);
     double rms;
     rms = 10.0;
-    double a (0);
     
     while( rms > err )
     {
@@ -161,9 +160,10 @@ void gauss_seidel(std::vector<std::vector<double>>& Tmap, const std::vector<std:
         
     
 
-        rms = sqrt(rms / N);        
+        rms = sqrt(rms / N);    
+          
     }
-    
+
     
 
 
